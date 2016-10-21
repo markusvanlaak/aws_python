@@ -2,7 +2,6 @@ import boto3
 
 ec2 = boto3.resource('ec2')
 
-instances = ec2.instances.filter(
-    Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
-for instance in instances:
-    print(instance.id, instance.instance_type)
+security_group = ec2.SecurityGroup('sg-4ae39a22')
+
+print security_group.group_name()
