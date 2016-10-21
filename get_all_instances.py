@@ -2,6 +2,18 @@ import boto3
 
 ec2 = boto3.resource('ec2')
 
+#Create instances
+ec2.create_instances(
+    DryRun=False, 
+    ImageId='ami-0044b96f' , 
+    MinCount=1, MaxCount=2, 
+    KeyName='gig3vpc', 
+    InstanceType='t2.micro', 
+    SubnetId='subnet-2eda2954', 
+    SecurityGroupIds=['sg-4ae39a22',]
+)
+
+
 for i in ec2.instances.all(): print (i)
 
 instances = ec2.instances.filter(
