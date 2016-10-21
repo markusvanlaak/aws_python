@@ -9,7 +9,12 @@ instances = ec2.instances.filter(
 for instance in instances:
     print(instance.id, instance.instance_type)
 
-for i in ec2.instances.filter(Filters=[{'Name': 'instance-state-name', 'Values': ['stopped']}]): print (i)
+for i in ec2.instances.filter(Filters=[{'Name': 'instance-state-name', 'Values': ['stopped']}]): 
+    print (i)
+    
+for instance in ec2.instances.all(): 
+    print (instance.id, instance.state)
+    instance.start(instance.id)
 
     
 #add tags
