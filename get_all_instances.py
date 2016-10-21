@@ -27,3 +27,15 @@ mytags = [{
 for i in ec2.security_groups.all(): id.append(i.id)
     for id_sg in id:
         ec2.create_tags(Resources = [id_sg],Tags= mytags)
+        
+#Create an instance
+ec2.create_instances(
+    DryRun=True,
+    ImageId='ami-0044b96f' , 
+    MinCount=1, 
+    MaxCount=5, 
+    KeyName='gig3vpc', 
+    InstanceType='t2.micro', 
+    SubnetId='subnet-2eda2954'
+)
+
